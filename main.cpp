@@ -70,11 +70,7 @@ void Draw()
 				else if (dir == DOWN)
 					cout << "^";
 			}
-			else if (i == enemy1X && j == enemy1Y)
-				cout << "X";
-			else if (i == enemy2X && j == enemy2Y)
-				cout << "X";
-			else if (i == enemy3X && j == enemy3Y)
+			else if ((i == enemy1X && j == enemy1Y) || (i == enemy2X && j == enemy2Y) || (i == enemy3X && j == enemy3Y))
 				cout << "X";
 			else
 				cout << map[i][j];
@@ -115,17 +111,13 @@ void direction()
 		break;
 	}
 
-	if (x == enemy1X && y == enemy1Y)
-		gameOver = true;
-	if (x == enemy2X && y == enemy2Y)
-		gameOver = true;
-	if (x == enemy3X && y == enemy3Y)
+	if ((x == enemy1X && y == enemy1Y) || (x == enemy2X && y == enemy2Y) || (x == enemy3X && y == enemy3Y))
 		gameOver = true;
 }
 
 void Enemies()
 {
-	if (e1 == false)
+	if (!e1)
 	{
 		enemy1Y--;
 		if (map[enemy1X][enemy1Y - 1] == '#')
@@ -138,7 +130,7 @@ void Enemies()
 			e1 = false;
 	}
 
-	if (e2 == false)
+	if (!e2)
 	{
 		enemy2X--;
 		if (map[enemy2X - 1][enemy2Y] == '#')
@@ -151,7 +143,7 @@ void Enemies()
 			e2 = false;
 	}
 
-	if (e3 == false)
+	if (!e3)
 	{
 		enemy3Y--;
 		if (map[enemy3X][enemy3Y - 1] == '#')
